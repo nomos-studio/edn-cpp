@@ -2,7 +2,7 @@
 
 A standalone, first-rate C++20 EDN parser and emitter. Zero Clojure dependency — it speaks EDN as a data format, not as a Clojure artifact.
 
-Part of the [cljseq](https://github.com/cljseq) ecosystem. Used directly by the cljseq sidecar and CLAP host container for reading patch files, plugin graph descriptions, and transaction log interchange.
+Part of the [nous](https://github.com/nous) ecosystem. Used directly by the nous sidecar and CLAP host container for reading patch files, plugin graph descriptions, and transaction log interchange.
 
 ## Status
 
@@ -78,7 +78,7 @@ cmake --build --preset release
 
 ```cmake
 FetchContent_Declare(edn-cpp
-  GIT_REPOSITORY https://github.com/cljseq/edn-cpp.git
+  GIT_REPOSITORY https://github.com/nous/edn-cpp.git
   GIT_TAG        v0.1.0
   GIT_SHALLOW    TRUE)
 FetchContent_MakeAvailable(edn-cpp)

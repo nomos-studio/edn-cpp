@@ -1,6 +1,6 @@
 # Contributing to edn-cpp
 
-This document captures the conventions for this project. It is also the reference template for future cljseq native C++ satellite repos — if you are starting a new one, copy this and adapt the project-specific sections.
+This document captures the conventions for this project. It is also the reference template for future nous native C++ satellite repos — if you are starting a new one, copy this and adapt the project-specific sections.
 
 ---
 
@@ -8,7 +8,7 @@ This document captures the conventions for this project. It is also the referenc
 
 ### CMake version and structure
 
-- **Minimum: CMake 3.20.** All cljseq native repos use 3.20 as the floor.
+- **Minimum: CMake 3.20.** All nous native repos use 3.20 as the floor.
 - Root `CMakeLists.txt` defines the library target and aggregates subdirectory options.
 - Each subdirectory (`src/`, `tests/`, `examples/`) has its own `CMakeLists.txt`.
 - Use `add_subdirectory` — no `include()` of sibling directories.
@@ -48,7 +48,7 @@ set_target_properties(my-lib PROPERTIES
 
 ### Dependency policy
 
-Following the cljseq native convention:
+Following the nous native convention:
 
 - **No Boost.** C++20 STL is sufficient.
 - External dependencies via `FetchContent` at a **pinned tag**. Always `GIT_SHALLOW TRUE`.
@@ -229,7 +229,7 @@ CompileFlags:
 
 ## Licensing
 
-All source files carry an SPDX identifier on the first line. cljseq satellite repos default to **BSL-1.0** for standalone C++ libraries — permissive, common in the C++ ecosystem, requires license text only in source distributions. MIT is an alternative for repos targeting a broader ecosystem audience. The main cljseq repo uses LGPL-2.1-or-later; note the distinction.
+All source files carry an SPDX identifier on the first line. nous satellite repos default to **BSL-1.0** for standalone C++ libraries — permissive, common in the C++ ecosystem, requires license text only in source distributions. MIT is an alternative for repos targeting a broader ecosystem audience. The main nous repo uses LGPL-2.1-or-later; note the distinction.
 
 ---
 
