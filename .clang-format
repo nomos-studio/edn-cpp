@@ -2,7 +2,7 @@
 Language: Cpp
 BasedOnStyle: LLVM
 
-# 4-space indentation (Boost/cljseq convention; LLVM default is 2)
+# 4-space indentation (Boost/nous convention; LLVM default is 2)
 IndentWidth: 4
 ContinuationIndentWidth: 4
 TabWidth: 4
