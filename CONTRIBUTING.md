@@ -231,6 +231,14 @@ CompileFlags:
 
 All source files carry an SPDX identifier on the first line. nous satellite repos default to **BSL-1.0** for standalone C++ libraries — permissive, common in the C++ ecosystem, requires license text only in source distributions. MIT is an alternative for repos targeting a broader ecosystem audience. The main nous repo uses LGPL-2.1-or-later; note the distinction.
 
+Compliance is checked with [REUSE](https://reuse.software/) (`pip install reuse`):
+
+```sh
+reuse lint
+```
+
+This must exit 0 before a release tag. CI runs it automatically. Each repo carries a `LICENSES/` directory at its root with the full text of every identifier it uses.
+
 ---
 
 ## Checklist for new native C++ satellite repos
@@ -238,12 +246,13 @@ All source files carry an SPDX identifier on the first line. nous satellite repo
 - [ ] Copy this CONTRIBUTING.md and adapt project-specific sections
 - [ ] Root `CMakeLists.txt` with correct target naming, generator expressions, and package export
 - [ ] `cmake/` directory with `config.cmake.in`
-- [ ] SPDX headers on all files
+- [ ] SPDX headers on all files; `reuse lint` exits 0
+- [ ] `LICENSES/` directory at repo root with the full license text(s) used
 - [ ] `.clangd` with relative `-Iinclude` flag
 - [ ] `compile_commands.json` symlink in `.gitignore` (it's a generated file)
 - [ ] `.clang-format` at repo root (copy from edn-cpp; adjust column limit if needed)
 - [ ] `CMakePresets.json` with `dev`, `ci`, and `release` presets (copy from edn-cpp; adjust option prefix)
-- [ ] `.github/workflows/ci.yml` with build+test matrix and clang-format check (copy from edn-cpp)
+- [ ] `.github/workflows/ci.yml` with build+test matrix, clang-format check, and `reuse lint` step (copy from edn-cpp)
 - [ ] `scripts/pre-commit` and `scripts/install-hooks.sh` (copy from edn-cpp)
 - [ ] Catch2 test target with `catch_discover_tests`
 - [ ] `LICENSE` file (BSL-1.0 or MIT — decide per repo; default BSL-1.0 for C++ libs)
