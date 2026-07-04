@@ -1,0 +1,19 @@
+version = 1
+SPDX-PackageName = "edn-cpp"
+SPDX-PackageSupplier = "rodgert@twrodgers.com"
+SPDX-PackageDownloadLocation = "https://github.com/nomos-studio/edn-cpp"
+
+# Authored source — SPDX-License-Identifier already inline; aggregate adds copyright.
+[[annotations]]
+path = ["src/**", "include/**", "tests/**", "cmake/**", "scripts/**", "CMakeLists.txt"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2025-2026 nomos-studio contributors"
+SPDX-License-Identifier = "BSL-1.0"
+
+# Project metadata and config files
+[[annotations]]
+path = ["README.md", "CONTRIBUTING.md", "CHANGELOG.md", "CMakePresets.json",
+        "LICENSE", ".gitignore", ".clang-format", ".clangd", ".github/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2025-2026 nomos-studio contributors"
+SPDX-License-Identifier = "BSL-1.0"

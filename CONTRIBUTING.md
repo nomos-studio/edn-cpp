@@ -102,7 +102,9 @@ check_required_components(my-lib)
 ### Headers
 
 - One logical unit per header. Keep headers lean.
+<!-- REUSE-IgnoreStart -->
 - SPDX identifier on the first line: `// SPDX-License-Identifier: BSL-1.0`
+<!-- REUSE-IgnoreEnd -->
 - `#pragma once` (not include guards).
 - Forward-declare where possible; avoid transitive includes in public headers.
 
