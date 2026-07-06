@@ -9,6 +9,7 @@ add_executable(edn-tests
 target_link_libraries(edn-tests
   PRIVATE edn::edn
           Catch2::Catch2WithMain
+          sanitizers::sanitizers
 )
 
 set_target_properties(edn-tests PROPERTIES

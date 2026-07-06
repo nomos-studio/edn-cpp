@@ -19,6 +19,7 @@ project(edn-cpp
 include(FetchContent)
 include(CMakePackageConfigHelpers)
 include(GNUInstallDirs)
+include(cmake/Sanitizers.cmake)
 
 set(FETCHCONTENT_UPDATES_DISCONNECTED ON CACHE BOOL
     "Skip network fetch if already populated")
@@ -52,6 +53,8 @@ target_include_directories(edn-cpp
   PRIVATE
     src
 )
+
+nomos_sanitize_target(edn-cpp)
 
 set_target_properties(edn-cpp PROPERTIES
   CXX_STANDARD          20
