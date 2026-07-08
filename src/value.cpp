@@ -51,7 +51,7 @@ std::string character::to_string() const {
     }
     if (codepoint > 0xFFFF) {
         // Encode as \uNNNNN+ (non-BMP; surrogate pairs not handled)
-        char buf[9]; // \u + up to 6 hex digits (0x10FFFF) + null
+        char buf[11]; // \u + up to 8 hex digits (uint32 max) + null; gcc can't bound the cast
         std::snprintf(buf, sizeof(buf), "\\u%04X", static_cast<unsigned>(codepoint));
         return buf;
     }
