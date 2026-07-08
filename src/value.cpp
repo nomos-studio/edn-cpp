@@ -50,8 +50,8 @@ std::string character::to_string() const {
         break;
     }
     if (codepoint > 0xFFFF) {
-        // Encode as \uNNNN (BMP only for now; surrogate pairs not handled)
-        char buf[8];
+        // Encode as \uNNNNN+ (non-BMP; surrogate pairs not handled)
+        char buf[9]; // \u + up to 6 hex digits (0x10FFFF) + null
         std::snprintf(buf, sizeof(buf), "\\u%04X", static_cast<unsigned>(codepoint));
         return buf;
     }
@@ -156,8 +156,8 @@ bool vector::operator<(const vector& o) const noexcept {
 
 void map::insert(value key, value val) {
     value_less less;
-    auto it = std::lower_bound(entries.begin(), entries.end(), key,
-                               [&less](const auto& e, const value& k) { return less(e.first, k); });
+    auto       it = std::lower_bound(entries.begin(), entries.end(), key,
+                                     [&less](const auto& e, const value& k) { return less(e.first, k); });
     if (it != entries.end() && !less(key, it->first))
         it->second = std::move(val); // replace existing
     else
@@ -166,8 +166,8 @@ void map::insert(value key, value val) {
 
 const value* map::find(const value& key) const {
     value_less less;
-    auto it = std::lower_bound(entries.begin(), entries.end(), key,
-                               [&less](const auto& e, const value& k) { return less(e.first, k); });
+    auto       it = std::lower_bound(entries.begin(), entries.end(), key,
+                                     [&less](const auto& e, const value& k) { return less(e.first, k); });
     if (it != entries.end() && !less(key, it->first))
         return &it->second;
     return nullptr;
